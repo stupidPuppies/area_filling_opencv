@@ -18,6 +18,6 @@ LIBS += C:/opencv/3.4.0/build/x64/vc15/lib/opencv_world340d.lib
 git clone https://github.com/stupidPuppies/OpenCV-MinGW-Build
 ```
 - Copy `OpenCV-MinGW-Build\include` to `C:\Qt\Qt5.10.0\5.10.0\mingw53_32\include` 
-- Copy `OpenCV-MinGW-Build\bin` to `C:\Qt\Qt5.10.0\Tools\mingw530_32\bin` 
+- Copy `OpenCV-MinGW-Build\bin` to `C:\Qt\Qt5.10.0\5.10.0\mingw53_32\lib` 
 
 **Notice: The QT path might be different in your computer.**

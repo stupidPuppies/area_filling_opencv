@@ -32,6 +32,12 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += C:/opencv/3.4.0/build/include
 
-LIBS += C:/opencv/3.4.0/build/x64/vc15/lib/opencv_world340d.lib
+
+win32-g++ {
+    LIBS += "libopencv_*"
+}
+win32-msvc*{
+    INCLUDEPATH += C:/opencv/3.4.0/build/include
+    LIBS += C:/opencv/3.4.0/build/x64/vc15/lib/opencv_world340d.lib
+}

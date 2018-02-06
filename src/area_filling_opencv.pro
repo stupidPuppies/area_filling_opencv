@@ -35,9 +35,25 @@ FORMS += \
 
 
 win32-g++ {
-    LIBS += "libopencv_*"
+    LIBS += -llibopencv_calib3d331 \
+    -llibopencv_core331 \
+    -llibopencv_dnn331 \
+    -llibopencv_features2d331 \
+    -llibopencv_flann331 \
+    -llibopencv_highgui331 \
+    -llibopencv_imgcodecs331 \
+    -llibopencv_imgproc331 \
+    -llibopencv_ml331 \
+    -llibopencv_objdetect331 \
+    -llibopencv_photo331 \
+    -llibopencv_shape331 \
+    -llibopencv_stitching331 \
+    -llibopencv_superres331 \
+    -llibopencv_video331 \
+    -llibopencv_videoio331 \
+    -llibopencv_videostab331
 }
 win32-msvc*{
-    INCLUDEPATH += C:/opencv/3.4.0/build/include
-    LIBS += C:/opencv/3.4.0/build/x64/vc15/lib/opencv_world340d.lib
+INCLUDEPATH += C:/opencv/3.4.0/build/include
+LIBS += C:/opencv/3.4.0/build/x64/vc15/lib/opencv_world340d.lib
 }

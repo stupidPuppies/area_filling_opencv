@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <imgoperate.h>
 namespace Ui {
 class MainWindow;
 }
@@ -18,7 +18,10 @@ public:
 private slots:
     void on_loadButton_clicked();
 
+    void on_nextButton_clicked();
+
 private:
+    ImgOperate imgop;
     Ui::MainWindow *ui;
 };
 

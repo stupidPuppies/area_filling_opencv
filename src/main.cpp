@@ -3,6 +3,7 @@
 #include <opencv/cv.hpp>
 
 using namespace cv;
+using namespace std;
 
 int main(int argc, char *argv[])
 {

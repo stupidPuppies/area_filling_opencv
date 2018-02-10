@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <imgoperate.h>
+#include <opencv/cv.hpp>
+#include <vector>
+
+using namespace std;
 namespace Ui {
 class MainWindow;
 }
@@ -22,7 +26,15 @@ private slots:
 
 private:
     ImgOperate imgop;
+    cv::Mat image;
+    cv::Mat canvas;
+    cv::Mat canvas_output;
+    vector<vector<cv::Point> > squares;
     Ui::MainWindow *ui;
+    vector<vector<cv::Point> >::iterator it;
+
+    void refreshCanvas();
+    void detectSquares();
 };
 
 #endif // MAINWINDOW_H

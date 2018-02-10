@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+    #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -19,6 +19,8 @@ private slots:
     void on_loadButton_clicked();
 
     void on_nextButton_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     ImgOperate imgop;

@@ -25,14 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    imgoperate.cpp
+    imgoperate.cpp \
+    cannytesterwindow.cpp
 
 HEADERS += \
         mainwindow.h \
-    imgoperate.h
+    imgoperate.h \
+    cannytesterwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    cannytesterwindow.ui
 
 
 

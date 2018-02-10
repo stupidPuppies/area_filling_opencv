@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QFileDialog>
 
+#include "cannytesterwindow.h"
 #include "imgoperate.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,7 +24,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_loadButton_clicked()
 {
    QString fileName = QFileDialog::getOpenFileName(this,"Select a picture",".","JPEG Files(*.jpg);;PNG Files(*.png)");
-   imgop.loagImg(fileName);
+   assert(imgop.loagImg(fileName) == true);
    imgop.process();
 
    //    if (!fileName.isNull()) {
@@ -48,4 +49,11 @@ void MainWindow::on_nextButton_clicked()
     ui->label->setPixmap(pixmap);
 
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    CannyTesterWindow *ctw = new CannyTesterWindow;
+    ctw->show();
+    this->hide();
 }

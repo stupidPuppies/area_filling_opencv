@@ -7,13 +7,15 @@
 
 #include "cannytesterwindow.h"
 #include "imgoperate.h"
-
+#include "dragablelabel.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 //    imgop = ImgOperate(this);
+    DragableLabel *label = new DragableLabel(this);
+    ui->verticalLayout->addWidget(label);
 }
 
 MainWindow::~MainWindow()

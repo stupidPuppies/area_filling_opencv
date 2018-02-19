@@ -25,15 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    imgoperate.cpp \
     cannytesterwindow.cpp \
-    dragablelabel.cpp
+    dragablelabel.cpp \
+    imgoperate.cpp
 
 HEADERS += \
         mainwindow.h \
-    imgoperate.h \
     cannytesterwindow.h \
-    dragablelabel.h
+    dragablelabel.h \
+    imgoperate.h
 
 FORMS += \
         mainwindow.ui \

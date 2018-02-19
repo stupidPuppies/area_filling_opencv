@@ -4,11 +4,17 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QFileDialog>
+#include <QDebug>
 #include <vector>
 
 #include "cannytesterwindow.h"
 #include "imgoperate.h"
 #include "dragablelabel.h"
+
+MainWindow *this_window;
+
+using namespace cv;
+
 
 double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0) {
     double dx1 = pt1.x - pt0.x;
@@ -19,13 +25,15 @@ double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0) {
 }
 
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 //    imgop = ImgOperate(this);
-    DragableLabel *label = new DragableLabel(this);
+    label = new DragableLabel(this);
+    this_window = this;
     ui->verticalLayout->addWidget(label);
 }
 
@@ -42,6 +50,7 @@ void MainWindow::on_loadButton_clicked()
    detectSquares();
    it = squares.begin();
    refreshCanvas();
+   on_nextButton_clicked();
 
 }
 
@@ -49,15 +58,21 @@ void MainWindow::on_nextButton_clicked()
 {
     image.copyTo(canvas);
     if (it == squares.end()) return;
-    cv::drawContours(canvas, squares, distance(squares.begin(), it), cv::Scalar(0, 255, 0), 5, 8, std::vector<cv::Vec4i>(), 0, cv::Point());
+    (label->points)[0] = QPoint((it->at(0)).x,(it->at(0)).y);
+    (label->points)[1] = QPoint((it->at(1)).x,(it->at(1)).y);
+    (label->points)[2] = QPoint((it->at(2)).x,(it->at(2)).y);
+    (label->points)[3] = QPoint((it->at(3)).x,(it->at(3)).y);
+    //cv::drawContours(canvas, squares, distance(squares.begin(), it), cv::Scalar(0, 255, 0), 5, 8, std::vector<cv::Vec4i>(), 0, cv::Point());
     it++;
     if (it == squares.end()) it = squares.begin();
+    label->update();
     refreshCanvas();
 }
 
 void MainWindow::refreshCanvas() {
+    replace();
     cv::cvtColor(canvas,canvas_output, CV_BGR2RGB);
-    ui->label->setPixmap(
+    label->setPixmap(
                 QPixmap::fromImage(
                     QImage(
                         canvas_output.data,
@@ -69,6 +84,7 @@ void MainWindow::refreshCanvas() {
                     )
                 );
 }
+
 
 void MainWindow::detectSquares() {
     vector<vector<cv::Point>> contours;
@@ -108,6 +124,7 @@ void MainWindow::detectSquares() {
             }
         }
     }
+
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -115,4 +132,38 @@ void MainWindow::on_pushButton_clicked()
     CannyTesterWindow *ctw = new CannyTesterWindow;
     ctw->show();
     this->hide();
+}
+
+void MainWindow::on_replaceButton_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,"Select a picture",".","JPEG Files(*.jpg);;PNG Files(*.png)");
+    replace_image = cv::imread(fileName.toStdString());
+    replace();
+    refreshCanvas();
+}
+
+void MainWindow::replace() {
+    if (replace_image.empty()) return;
+    image.copyTo(canvas);
+    replace_image_transformed = cv::Mat(canvas.size(), CV_8UC4);
+
+    std::vector<cv::Point2f> src = {
+        cv::Point2f(0, 0),
+        cv::Point2f(0, replace_image.rows - 1),
+        cv::Point2f(replace_image.cols - 1, replace_image.rows - 1),
+        cv::Point2f(replace_image.cols - 1, 0)
+        };
+
+    std::vector<cv::Point2f> dst = {
+        cv::Point2f((label->points)[0].x(), (label->points)[0].y()),
+        cv::Point2f((label->points)[1].x(), (label->points)[1].y()),
+        cv::Point2f((label->points)[2].x(), (label->points)[2].y()),
+        cv::Point2f((label->points)[3].x(), (label->points)[3].y()),
+    };
+
+    cv::Mat transform = cv::getPerspectiveTransform(src, dst);
+    warpPerspective(replace_image, replace_image_transformed, transform, replace_image_transformed.size());
+    std::vector<cv::Mat> replace_image_transformed_channels;
+    split(replace_image_transformed, replace_image_transformed_channels);
+    replace_image_transformed.copyTo(canvas, replace_image_transformed_channels[0]);
 }

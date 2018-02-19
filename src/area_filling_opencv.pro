@@ -25,35 +25,40 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    imgoperate.cpp
+    imgoperate.cpp \
+    cannytesterwindow.cpp \
+    dragablelabel.cpp
 
 HEADERS += \
         mainwindow.h \
-    imgoperate.h
+    imgoperate.h \
+    cannytesterwindow.h \
+    dragablelabel.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    cannytesterwindow.ui
 
 
 
 win32-g++ {
-    LIBS += -llibopencv_calib3d331 \
-    -llibopencv_core331 \
-    -llibopencv_dnn331 \
-    -llibopencv_features2d331 \
-    -llibopencv_flann331 \
-    -llibopencv_highgui331 \
-    -llibopencv_imgcodecs331 \
-    -llibopencv_imgproc331 \
-    -llibopencv_ml331 \
-    -llibopencv_objdetect331 \
-    -llibopencv_photo331 \
-    -llibopencv_shape331 \
-    -llibopencv_stitching331 \
-    -llibopencv_superres331 \
-    -llibopencv_video331 \
-    -llibopencv_videoio331 \
-    -llibopencv_videostab331
+    LIBS += -llibopencv_calib3d \
+    -llibopencv_core \
+    -llibopencv_dnn \
+    -llibopencv_features2d \
+    -llibopencv_flann \
+    -llibopencv_highgui \
+    -llibopencv_imgcodecs \
+    -llibopencv_imgproc \
+    -llibopencv_ml \
+    -llibopencv_objdetect \
+    -llibopencv_photo \
+    -llibopencv_shape \
+    -llibopencv_stitching \
+    -llibopencv_superres \
+    -llibopencv_video \
+    -llibopencv_videoio \
+    -llibopencv_videostab
 }
 win32-msvc*{
 INCLUDEPATH += C:/opencv/3.4.0/build/include

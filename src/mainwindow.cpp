@@ -8,7 +8,7 @@
 
 #include "cannytesterwindow.h"
 #include "imgoperate.h"
-<<<<<<< HEAD
+#include "dragablelabel.h"
 
 double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0) {
     double dx1 = pt1.x - pt0.x;
@@ -18,20 +18,15 @@ double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0) {
     return (dx1*dx2 + dy1*dy2) / sqrt((dx1*dx1 + dy1*dy1)*(dx2*dx2 + dy2*dy2) + 1e-10);
 }
 
-=======
-#include "dragablelabel.h"
->>>>>>> drag-point-label
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
-=======
 //    imgop = ImgOperate(this);
     DragableLabel *label = new DragableLabel(this);
     ui->verticalLayout->addWidget(label);
->>>>>>> drag-point-label
 }
 
 MainWindow::~MainWindow()
@@ -42,23 +37,12 @@ MainWindow::~MainWindow()
 void MainWindow::on_loadButton_clicked()
 {
    QString fileName = QFileDialog::getOpenFileName(this,"Select a picture",".","JPEG Files(*.jpg);;PNG Files(*.png)");
-<<<<<<< HEAD
    image = cv::imread(fileName.toStdString());
    image.copyTo(canvas);
    detectSquares();
    it = squares.begin();
    refreshCanvas();
 
-=======
-   assert(imgop.loagImg(fileName) == true);
-   imgop.process();
-
-   //    if (!fileName.isNull()) {
-//        cv::Mat image = cv::imread(fileName.toStdString());
-//        cv::cvtColor(image, image, CV_BGR2RGB);
-//        ui->label->setPixmap(QPixmap::fromImage(QImage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888)));
-//    }
->>>>>>> drag-point-label
 }
 
 void MainWindow::on_nextButton_clicked()
@@ -126,12 +110,9 @@ void MainWindow::detectSquares() {
     }
 }
 
-<<<<<<< HEAD
-=======
 void MainWindow::on_pushButton_clicked()
 {
     CannyTesterWindow *ctw = new CannyTesterWindow;
     ctw->show();
     this->hide();
 }
->>>>>>> drag-point-label

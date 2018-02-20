@@ -2,7 +2,10 @@
 
 ImgOperate::ImgOperate()
 {
-
+    Square default_square = {QPoint(10,10), QPoint(100,10), QPoint(100,100), QPoint(10,100)};
+    squares.push_back(default_square);
+    it = squares.begin();
+    CurrentSquare() = *it;
 }
 
 Square& ImgOperate::CurrentSquare() {
@@ -53,6 +56,14 @@ QPixmap ImgOperate::GetCanvas() {
                     QImage::Format_RGB888
                     )
                 );
+}
+
+int ImgOperate::SaveImage(QString fileName) {
+    return cv::imwrite(fileName.toStdString(), canvas);
+}
+
+bool ImgOperate::IsEmpty() {
+    return main_image.empty();
 }
 
 void ImgOperate::initialize() {

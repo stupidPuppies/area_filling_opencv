@@ -21,6 +21,8 @@ public:
     int LoadMainImage(QString fileName);
     int LoadReplaceImage(QString fileName);
     QPixmap GetCanvas();
+    int SaveImage(QString fileName);
+    bool IsEmpty();
 
 private:
     cv::Mat main_image;

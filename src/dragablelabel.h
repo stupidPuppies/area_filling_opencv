@@ -7,16 +7,15 @@
 #include <vector>
 
 #include <opencv/cv.hpp>
-
-
+#include "imgoperate.h"
 
 class DragableLabel : public QLabel
 {
     Q_OBJECT
 public:
     explicit DragableLabel(QWidget *parent = nullptr);
-    QPoint points[4] = {QPoint(10,10),QPoint(100,10),QPoint(100,100),QPoint(10,100)};
-    std::vector<std::vector<cv::Point> > squares;
+    Square points = {QPoint(10,10), QPoint(100,10), QPoint(100,100), QPoint(10,100)};
+    ImgOperate *imgop;
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *ev);

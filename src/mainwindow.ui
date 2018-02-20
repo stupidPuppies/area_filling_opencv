@@ -10,8 +10,13 @@
     <height>405</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Area Filling</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -32,6 +37,11 @@
        </property>
        <item>
         <widget class="QPushButton" name="loadButton">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
           <string>Load</string>
          </property>
@@ -45,27 +55,47 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
-          <string>prev</string>
+          <string>Previous</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="nextButton">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
-          <string>next</string>
+          <string>Next</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="replaceButton">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
-          <string>replace</string>
+          <string>Replace</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="saveButton">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
           <string>Save</string>
          </property>
@@ -73,6 +103,11 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
          <property name="text">
           <string>CannyTester</string>
          </property>

@@ -2,19 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <imgoperate.h>
 #include <opencv/cv.hpp>
-#include <vector>
 
 #include "dragablelabel.h"
+#include "imgoperate.h"
 
-using namespace std;
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -24,8 +21,6 @@ private slots:
     void on_loadButton_clicked();
 
     void on_nextButton_clicked();
-
-    void on_pushButton_clicked();
 
     void on_replaceButton_clicked();
 

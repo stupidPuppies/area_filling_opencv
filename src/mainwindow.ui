@@ -101,18 +101,6 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>CannyTester</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>

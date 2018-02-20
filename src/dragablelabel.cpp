@@ -1,4 +1,3 @@
-#include "dragablelabel.h"
 #include <QString>
 #include <QtMath>
 #include <QPainter>
@@ -6,15 +5,14 @@
 #include <QMouseEvent>
 #include <QPen>
 #include <QDebug>
-#include "mainwindow.h"
 
-DragableLabel::DragableLabel(QWidget *parent) : QLabel(parent)
-{
+#include "dragablelabel.h"
+
+DragableLabel::DragableLabel(QWidget *parent) : QLabel(parent) {
 
 }
 
-void DragableLabel::paintEvent(QPaintEvent *)
-{
+void DragableLabel::paintEvent(QPaintEvent *) {
          QPainter painter(this);
          if(this->pixmap())
             painter.drawPixmap(0, 0, *(this->pixmap()));
@@ -29,8 +27,7 @@ void DragableLabel::paintEvent(QPaintEvent *)
          }
 }
 
-void DragableLabel::mousePressEvent(QMouseEvent *ev)
-{
+void DragableLabel::mousePressEvent(QMouseEvent *ev) {
     int x=ev->x(),y=ev->y();
     for(int i=0;i<4;i++){
         if(qPow(points[i].x() - x,2) + qPow(points[i].y() - y,2) < 100){
@@ -41,8 +38,7 @@ void DragableLabel::mousePressEvent(QMouseEvent *ev)
     update();
 }
 
-void DragableLabel::mouseMoveEvent(QMouseEvent *ev)
-{
+void DragableLabel::mouseMoveEvent(QMouseEvent *ev) {
     if(movingPointIndex != -1) {
         points[movingPointIndex].setX(ev->x());
         points[movingPointIndex].setY(ev->y());
@@ -51,8 +47,8 @@ void DragableLabel::mouseMoveEvent(QMouseEvent *ev)
     this->setPixmap(imgop->GetCanvas());
     update();
 }
-void DragableLabel::mouseReleaseEvent(QMouseEvent *ev)
-{
+
+void DragableLabel::mouseReleaseEvent(QMouseEvent *ev) {
     if(movingPointIndex != -1) {
         points[movingPointIndex].setX(ev->x());
         points[movingPointIndex].setY(ev->y());

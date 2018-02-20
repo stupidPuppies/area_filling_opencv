@@ -8,10 +8,9 @@
 #include <opencv/cv.hpp>
 #include <vector>
 
-typedef std::vector<QPoint> Square;
+typedef ::std::vector<QPoint> Square;
 
-class ImgOperate
-{
+class ImgOperate {
 public:
     ImgOperate();
     Square& CurrentSquare();
@@ -25,19 +24,19 @@ public:
     bool IsEmpty();
 
 private:
-    cv::Mat main_image;
-    cv::Mat canvas;
-    cv::Mat canvas_output;
-    cv::Mat replace_image;
-    cv::Mat replace_image_transformed;
-    std::vector<Square> squares;
-    std::vector<Square>::iterator it;
+    ::cv::Mat main_image;
+    ::cv::Mat canvas;
+    ::cv::Mat canvas_output;
+    ::cv::Mat replace_image;
+    ::cv::Mat replace_image_transformed;
+    ::std::vector<Square> squares;
+    ::std::vector<Square>::iterator it;
     Square current_square;
 
     void initialize();
-    int loadImage(QString fileName, cv::Mat& mat);
+    int loadImage(QString fileName, ::cv::Mat& mat);
     void detectSquares();
-    double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
+    double angle(::cv::Point pt1, ::cv::Point pt2, ::cv::Point pt0);
     int process();
     int refreshCanvas();
     int replace();

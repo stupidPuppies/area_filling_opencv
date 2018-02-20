@@ -5,12 +5,11 @@
 #include <QLabel>
 #include <QPoint>
 #include <vector>
-
 #include <opencv/cv.hpp>
+
 #include "imgoperate.h"
 
-class DragableLabel : public QLabel
-{
+class DragableLabel : public QLabel {
     Q_OBJECT
 public:
     explicit DragableLabel(QWidget *parent = nullptr);
@@ -26,6 +25,7 @@ private:
 signals:
 
 public slots:
+
 };
 
 #endif // dragABLELABEL_H

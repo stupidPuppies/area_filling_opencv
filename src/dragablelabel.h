@@ -4,10 +4,14 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPoint>
+#include <QTimer>
 #include <vector>
 #include <opencv/cv.hpp>
 
 #include "imgoperate.h"
+
+
+#define TIMEOUT 2000
 
 class DragableLabel : public QLabel {
     Q_OBJECT
@@ -22,9 +26,18 @@ protected:
     void mouseReleaseEvent(QMouseEvent *ev);
 private:
     int movingPointIndex = -1;
+    int movingEdgeIndex = -1;
+    int movingWhole = -1;
+    int when_moving_whole_dx_to_point0;
+    int when_moving_whole_dy_to_point0;
+    double ratio;
+    QTimer *timer;
+    bool isPressing = false;
+    bool needToDrawContour = true;
 signals:
 
 public slots:
+    void noMoveTimeout();
 
 };
 

@@ -8,6 +8,7 @@
 #include <opencv/cv.hpp>
 #include <vector>
 
+
 typedef ::std::vector<QPoint> Square;
 
 class ImgOperate {
@@ -17,11 +18,13 @@ public:
     const Square& CurrentSquare() const;
     Square NextSquare();
     Square PreviousSquare();
+    int SetSquare(const Square& square);
     int LoadMainImage(QString fileName);
     int LoadReplaceImage(QString fileName);
     QPixmap GetCanvas();
     int SaveImage(QString fileName);
     bool IsEmpty();
+    bool IsReplaceImageEmpty();
 
 private:
     ::cv::Mat main_image;
@@ -40,6 +43,7 @@ private:
     int process();
     int refreshCanvas();
     int replace();
+    bool square_changed = true;
 };
 
 #endif // IMGOPERATE_H

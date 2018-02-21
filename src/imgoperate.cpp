@@ -5,6 +5,7 @@ ImgOperate::ImgOperate() {
     squares.push_back(default_square);
     it = squares.begin();
     CurrentSquare() = *it;
+
 }
 
 Square& ImgOperate::CurrentSquare() {
@@ -27,6 +28,12 @@ Square ImgOperate::PreviousSquare() {
     it--;
     CurrentSquare() = *it;
     return CurrentSquare();
+}
+
+int ImgOperate::SetSquare(const Square& square) {
+    square_changed = true;
+    CurrentSquare() = square;
+    return 0;
 }
 
 int ImgOperate::LoadMainImage(QString fileName) {
@@ -63,6 +70,10 @@ int ImgOperate::SaveImage(QString fileName) {
 
 bool ImgOperate::IsEmpty() {
     return main_image.empty();
+}
+
+bool ImgOperate::IsReplaceImageEmpty() {
+    return replace_image.empty();
 }
 
 void ImgOperate::initialize() {
